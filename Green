@@ -1,0 +1,13 @@
+from PIL import Image
+
+# Open an image file
+image_path = "path/to/your/image.jpg"
+img = Image.open(image_path)
+
+# Convert white color to green
+data = img.getdata()
+new_data = [(0, 255, 0) if pixel == (255, 255, 255) else pixel for pixel in data]
+
+# Update the image with the modified colors
+img.putdata(new_data)
+img.save("path/to/save/new/image.jpg")
